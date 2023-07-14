@@ -22,7 +22,13 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build and test
-        run: npm run build && npm test
+      - name: Build Android app
+        run: npx react-native run-android --no-packager
+
+      - name: Build iOS app
+        run: npx react-native run-ios --no-packager
+
+      - name: Run tests
+        run: npm test
